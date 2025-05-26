@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSight - Intelligent Threat Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>SecureSight</h1>
+                        <p>Intelligent Threat Detection System</p>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="risk-badge" id="riskBadge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Low Risk</span>
+                    </div>
+                    <div class="threat-counter">
+                        <p>Active Threats</p>
+                        <span id="threatCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-container">
+        <div class="dashboard-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Upload Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-upload"></i> Media Upload & Analysis</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="uploadArea" class="upload-area">
+                            <div class="upload-content">
+                                <div class="upload-icons">
+                                    <i class="fas fa-image"></i>
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <div class="upload-text">
+                                    <p>Upload Image or Video</p>
+                                    <span>Drag and drop or click to select files</span>
+                                </div>
+                                <button class="btn-primary" onclick="document.getElementById('fileInput').click()">
+                                    Choose File
+                                </button>
+                                <input type="file" id="fileInput" accept="image/*,video/*" style="display: none;">
+                            </div>
+                        </div>
+
+                        <div id="filePreview" class="file-preview" style="display: none;">
+                            <div class="file-info">
+                                <div class="file-icon">
+                                    <i id="fileTypeIcon" class="fas fa-image"></i>
+                                </div>
+                                <div class="file-details">
+                                    <p id="fileName"></p>
+                                    <span id="fileSize"></span>
+                                </div>
+                                <button class="btn-clear" onclick="clearUpload()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="preview-container">
+                                <img id="imagePreview" style="display: none;">
+                                <video id="videoPreview" controls style="display: none;"></video>
+                                <div id="detectionOverlay" class="detection-overlay"></div>
+                            </div>
+                            <div id="analysisProgress" class="analysis-progress" style="display: none;">
+                                <div class="progress-info">
+                                    <span>Analyzing threats...</span>
+                                    <span>Processing</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detection Results -->
+                <div id="resultsCard" class="card" style="display: none;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Detection Results</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="detectionResults" class="detection-grid"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar - Logs -->
+            <div class="sidebar">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> Activity Logs</h3>
+                    </div>
+                    <div class="card-content">
+                        <div id="activityLogs" class="logs-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
